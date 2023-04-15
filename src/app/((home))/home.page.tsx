@@ -43,21 +43,18 @@ export default function HomePage() {
         `https://api.dictionaryapi.dev/api/v2/entries/en/${query}`
       );
 
-      console.log(JSON.stringify({query: query}));
+      console.log('Send request:', query);
       // Call your own API route to get more information about the word
       const openaiData = await fetch('/api/wordinfo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        // body: JSON.stringify({query: query}),
+        body: JSON.stringify({query: query}),
       });
       const data = await dynamicData.json();
       const data2 = await openaiData.json();
-      // const content = data2.choices[0].message.content;
-      // console.log(content);
-      // console.log(data);
-      // data[0].content = content;
+      data[0].content = data2.content;
 
       if (dynamicData.status === 200) {
         setData(data);
