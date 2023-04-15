@@ -5,19 +5,19 @@ export const metadata = {
   title: "Wordify - User friendly dictionary app",
   description:
     "The app provides an intuitive interface that enables users to search for words easily and quickly. Users can enter a word into the search bar and get immediate results, including the word's definition, pronunciation, and usage examples. The app may also suggest similar words or provide related words to expand the user's vocabulary",
-  url: "https://wordify-pro.vercel.app/",
+  url: "https://wordify.snaplearn.ai/",
   openGraph: {
     type: "website",
     locale: "en_IE",
-    url: "https://wordify-pro.vercel.app/",
+    url: "https://wordify.snaplearn.ai/",
     title: "User friendly dictionary app",
     description:
       "The app provides an intuitive interface that enables users to search for words easily and quickly. Users can enter a word into the search bar and get immediate results, including the word's definition, pronunciation, and usage examples. The app may also suggest similar words or provide related words to expand the user's vocabulary",
     images: [],
   },
   twitter: {
-    handle: "@handle",
-    site: "@site",
+    handle: "@snaplearn",
+    site: "@snaplearn.ai",
     cardType: "summary_large_image",
   },
 };

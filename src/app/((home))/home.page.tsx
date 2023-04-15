@@ -42,7 +42,23 @@ export default function HomePage() {
       const dynamicData = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${query}`
       );
+
+      console.log(JSON.stringify({query: query}));
+      // Call your own API route to get more information about the word
+      const openaiData = await fetch('/api/wordinfo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify({query: query}),
+      });
       const data = await dynamicData.json();
+      const data2 = await openaiData.json();
+      // const content = data2.choices[0].message.content;
+      // console.log(content);
+      // console.log(data);
+      // data[0].content = content;
+
       if (dynamicData.status === 200) {
         setData(data);
         setError(data);
@@ -112,6 +128,13 @@ function Word({ word, setKeyword, searchQuery }: any) {
           <SvgIcon icon={"Play"} className="theme-text-on-primary" size={10} />
         </button>
       </div>
+      <div>
+        <div className="flex flex-col my-4 border-t py-2">
+          <Label size="body" variant="s1">
+            {word.content}
+          </Label>  
+        </div>
+      </div>
       <div className="flex flex-col">
         <Meanings
           meanings={word.meanings}
@@ -120,7 +143,7 @@ function Word({ word, setKeyword, searchQuery }: any) {
             searchQuery(query);
           }}
         />
-      </div>
+      </div>      
       <div>
         <div className="flex flex-col my-4 border-t py-2">
           <Label size="body" variant="s1">
